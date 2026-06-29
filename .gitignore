@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Environment
+.env
+
+# macOS
+.DS_Store
+
+# Logs
+logs/
+
+# Database
+*.db
+
+# VS Code
+.vscode/
+
+# Ollama cache (optional)
+*.gguf

@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    background: #0f172a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.chat-window {
+    height: 500px;
+    overflow-y: auto;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.message {
+    margin-bottom: 16px;
+}
+
+.user {
+    color: #38bdf8;
+}
+
+.jarvis {
+    color: #4ade80;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+}
+
+.chat-input button {
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}

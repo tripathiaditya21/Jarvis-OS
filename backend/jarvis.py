@@ -1,45 +1,64 @@
-from brain.planner import Planner
-from executor.executor import Executor
-
+from ai.brain import JarvisBrain
 from voice.speech import Listener
 from voice.tts import Speaker
 
 
-planner = Planner()
-executor = Executor()
+def main():
 
-listener = Listener()
+    print("=" * 50)
+    print("🤖 JARVIS OS")
+    print("=" * 50)
 
-Speaker.speak("Jarvis is online.")
+    brain = JarvisBrain()
+    listener = Listener()
 
-while True:
+    Speaker.speak("Jarvis is online. How can I help you?")
 
-    command = listener.listen()
+    while True:
 
-    if not command:
-        continue
+        try:
 
-    if command.lower() in [
-        "exit",
-        "quit",
-        "stop",
-        "goodbye"
-    ]:
+            command = listener.listen()
 
-        Speaker.speak("Goodbye Aditya.")
+            if not command:
+                continue
 
-        break
+            command = command.strip()
 
-    try:
+            # Exit commands
+            if command.lower() in [
+                "exit",
+                "quit",
+                "goodbye",
+                "bye",
+                "shutdown jarvis",
+            ]:
+                Speaker.speak("Goodbye Aditya. Have a great day!")
+                break
 
-        plan = planner.create_plan(command)
+            print(f"\n👤 You: {command}")
 
-        response = executor.execute(plan)
+            print("\n🧠 Thinking...")
 
-        Speaker.speak(response)
+            response = brain.process(command)
 
-    except Exception as e:
+            print(f"\n🤖 JARVIS: {response}")
 
-        Speaker.speak("Sorry, something went wrong.")
+            Speaker.speak(response)
 
-        print(e)
+        except KeyboardInterrupt:
+
+            Speaker.speak("Goodbye Aditya.")
+            break
+
+        except Exception as e:
+
+            print(f"\n❌ Error: {e}")
+
+            Speaker.speak(
+                "Sorry, something went wrong."
+            )
+
+
+if __name__ == "__main__":
+    main()
